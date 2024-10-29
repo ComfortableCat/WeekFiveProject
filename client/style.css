@@ -1,3 +1,50 @@
 body {
-  margin: 0%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: lightblue;
+}
+
+main {
+  flex: 1;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  overflow-y: auto;
+}
+
+ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  font-size: x-large;
+  list-style: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: lightblue;
+  color: white;
 }
