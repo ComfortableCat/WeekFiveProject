@@ -105,16 +105,15 @@ app.post("/tasks", async function (req, res) {
 
 // Update task
 app.put("/tasks", async function (req, res) {
-  const data = req.body;
-  const id = data[0];
-  const name = data[1];
-  const status = data[2];
-  const member_id = data[3];
-  const description = data[4];
-  const duedate = data[5];
+  const id = req.body[0];
+  const name = req.body[1];
+  const status = req.body[2];
+  const member_id = req.body[3];
+  const description = req.body[4];
+  const duedate = req.body[5];
   const result = await db.query(
-    "UPDATE tasks SET name = $1, status = $2, member_id = $3, description = $4, duedate = $5 WHERE id = $1",
-    [id, name, status, member_id, description, duedate]
+    "UPDATE tasks SET name = $1, description = $2, status = $3, duedate = $4, member_id = $5 WHERE id = $6",
+    [name, description, status, duedate, member_id, id]
   );
 });
 
