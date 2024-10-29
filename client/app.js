@@ -8,55 +8,73 @@ const passErrP = document.getElementById("passwordError");
 async function goToGroup(event) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
+  gnErrP.textContent = "";
+  dnErrP.textContent = "";
+  passErrP.textContent = "";
+  form.reset();
   console.log(data);
   if (
     //check if inputs are empty
-    data.displayName === "" ||
-    data.groupName === "" ||
-    data.password === ""
+    data.displayName !== "" &&
+    data.groupName !== "" &&
+    data.password !== ""
   ) {
-    //if empty show error
-    console.log(`data is empty`);
-  } else if (event.submitter.id === "join") {
-    const result = await fetch(
-      `https://weekfiveproject.onrender.com/groups?groupName=${data.groupName}`
-    );
-    const groupDetails = result.json;
-    if (groupDetails.length === 0) {
-      //need to check for unique display name
-      form.reset();
-      gnErrP.textContent = "Group name is miss spelled or does not exist";
+    if (data.password.length >= 6) {
+      if (event.submitter.id === "join") {
+        const result = await fetch(
+          `http://localhost:8080/groups?groupName=${data.groupName}&displayName=${data.displayName}&password=${data.password}`
+        );
+        const reply = await result.json();
+        console.log(reply.message);
+        debugger;
+        console.log(Object.keys(reply).length);
+        if (reply.message.group === "doesntExist") {
+          gnErrP.textContent = "Group name is miss spelled or does not exist";
+        } else if (reply.message.password === "bad") {
+          passErrP.textContent = "Password is incorrect";
+        } else if (Object.keys(reply).length === 3) {
+          saveAndGo(reply);
+        } else {
+          alert("unexpected join error");
+        }
+      } else if (event.submitter.id === "create") {
+        //create request
+
+        const result = await fetch(`http://localhost:8080/groups`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const reply = await result.json();
+        if (reply === "gExists") {
+          gnErrP.textContent = "Group already exists";
+        } else if (Object.keys(reply).length === 2) {
+          saveAndGo(data);
+        } else {
+          alert("unexpected create error");
+        }
+      } else {
+        alert("unexpected error");
+      }
     } else {
-      saveAndGo(data);
-    }
-  } else if (event.submitter.id === "create") {
-    //create request
-    const result = await fetch(`https://weekfiveproject.onrender.com/groups`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    const reply = await response.json();
-    console.log(reply);
-    if (reply === "gExists") {
-      gnErrP.textContent = "Group already exists";
-    } else {
-      saveAndGo(data);
+      passErrP.textContent = "Password must be 6 characters or more";
     }
   } else {
-    alert("unexpected error");
+    dnErrP.textContent = "Inputs cannot be empty";
   }
 }
-
 function saveAndGo(a) {
-  localStorage.setItem("groupDetails", JSON.stringify(a));
+  localStorage.setItem(
+    "details",
+    JSON.stringify({ group: a.group, member: a.member })
+  );
   window.location.assign(
-    `https://LoopIn.onrender.com/projects?groupName=${a.groupName}`
+    `https://LoopIn.onrender.com/projects?groupName=${a.group.groupName}`
   );
 }
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log(event.submitter.id);
+  console.log(event.submitter.id, " pressed");
   goToGroup(event);
 });

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wk5 Project Page</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h2>Display Group Name Here</h2>
+
+      <h1>Create Your Project Tasks</h1>
+      <form id="tasks-container">
+        <input type="text" name="tasks-name" placeholder="Task Name" />
+        <input type="text" name="tasks-descripton" placeholder="Task Details" />
+        <!--  -->
+        <label for="tasks-status">Task Status</label>
+        <select name="tasks-status" id="tasks-status">
+          <option value="todo">To Do</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done!</option>
+        </select>
+        <!--  -->
+        <input type="text" name="tasks-duedate" placeholder="Due date" />
+        <!--  -->
+        <label for="tasks-priority">Task Priority</label>
+        <select name="tasks-priority" id="Priority">
+          <option value="high">High!</option>
+          <option value="low">Low</option>
+        </select>
+        <button type="submit" id="submit">Add Task to Project</button>
+      </form>
+    </main>
+  </body>
+</html>

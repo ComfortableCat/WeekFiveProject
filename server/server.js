@@ -14,7 +14,76 @@ const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 app.get("/", (req, res) => res.json("Root route"));
 
 // GROUP ROUTES //
+app.get("/groups", async (req, res) => {
+  const { groupName, displayName, password } = req.query;
+  console.log(groupName, displayName, password);
+  const groupData = await groupFetch(groupName);
+  console.log(groupData);
+  const displayData = await db.query(
+    "SELECT * FROM groupmembers WHERE displayname = $1",
+    [displayName]
+  );
+  const message = {
+    group: "doesntExist",
+    password: "bad",
+  };
+  if (groupData.length !== 0) {
+    message.group = "exists";
+    console.log("exists");
+  }
+  if (groupData[0].password === password) {
+    message.password = "good";
+    console.log("good");
+  }
+  if (displayData.rows.length === 0) {
+    await db.query(
+      "INSERT INTO groupmembers (displayname, group_id) VALUES ($1, (SELECT id FROM taskgroups WHERE name = $2))",
+      [displayName, groupName]
+    );
+  }
+  const response = {
+    group: groupData,
+    member: displayData.rows,
+    message: message,
+  };
+  console.log("js.49", response);
+  res.json(response);
+});
 
+app.post("/groups", async (req, res) => {
+  const { displayName, groupName, password } = req.body;
+  const groupData = await groupFetch(groupName);
+  if (groupData.length === 0) {
+    await db.query("INSERT INTO taskgroups (name,password) VALUES ($1,$2)", [
+      groupName,
+      password,
+    ]);
+    await db.query(
+      "INSERT INTO groupmembers (displayname, group_id) VALUES ($1, (SELECT id FROM taskgroups WHERE name = $2))",
+      [displayName, groupName]
+    );
+    const response = {};
+    response.group = await db.query(
+      "SELECT * FROM taskgroups WHERE name = $1",
+      [groupName]
+    );
+    response.member = await db.query(
+      "SELECT * FROM groupmembers WHERE displayname = $1",
+      [displayName]
+    );
+    res.json(response); //RETURN ALL DATABASE INFO
+  } else {
+    res.json("gExists");
+  }
+});
+
+async function groupFetch(groupName) {
+  const result = await db.query("SELECT * FROM taskgroups WHERE name = $1", [
+    groupName,
+  ]);
+  const groupData = result.rows;
+  return groupData;
+}
 // MEMBER ROUTES //
 
 // TASK ROUTES //
