@@ -19,19 +19,24 @@ async function goToGroup(event) {
     console.log(`data is empty`);
   } else if (event.submitter.id === "join") {
     const result = await fetch(
-      `https://weekfiveproject.onrender.com/groups?groupName=${data.groupName}`
+      `http://localhost:8080/groups?groupName=${data.groupName}`
     );
-    const groupDetails = result.json;
+    const groupDetails = await result.json();
+    console.log(groupDetails);
     if (groupDetails.length === 0) {
       //need to check for unique display name
       form.reset();
       gnErrP.textContent = "Group name is miss spelled or does not exist";
-    } else {
+    } else if (groupDetails[0].password === data.password) {
+      console.log("yippee");
+      form.reset();
       saveAndGo(data);
+    } else {
+      alert("unexpected join error");
     }
   } else if (event.submitter.id === "create") {
     //create request
-    const result = await fetch(`https://weekfiveproject.onrender.com/groups`, {
+    const result = await fetch(`http://localhost:8080/groups`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

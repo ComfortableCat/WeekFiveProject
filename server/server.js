@@ -14,6 +14,16 @@ const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 app.get("/", (req, res) => res.json("Root route"));
 
 // GROUP ROUTES //
+app.get("/groups", async (req, res) => {
+  const groupName = req.query.groupName;
+  console.log(groupName);
+  const result = await db.query("SELECT * FROM taskgroups WHERE name = $1", [
+    groupName,
+  ]);
+  const groupData = result.rows;
+  console.log(groupData);
+  res.json(groupData);
+});
 
 // MEMBER ROUTES //
 
