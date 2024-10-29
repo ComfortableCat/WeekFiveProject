@@ -6,8 +6,9 @@ async function handleSubmit(event) {
 
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData);
+  console.log(data);
 
-  const response = await fetch("http://localhost:8080/xxxxx", {
+  const response = await fetch("http://localhost:8080/Tasks", {
     method: "POST",
     body: JSON.stringify(formObj),
     headers: { "Content-Type": "application/json" },
@@ -17,7 +18,7 @@ async function handleSubmit(event) {
 }
 form.addEventListener("submit", handleSubmit);
 
-// OTHER TASKS NEED TO SHOW ON THE SCREEN
+// OTHER TASKS -AS PROJECT SUMMARIES- NEED TO SHOW ON THE SCREEN
 async function getTasks() {
   const response = await fetch("server address here");
   const tasks = await response.json();
