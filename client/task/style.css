@@ -1,0 +1,107 @@
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: lightblue;
+}
+
+main {
+  flex: 1;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  overflow-y: auto;
+}
+
+ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  font-size: x-large;
+  list-style: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* .task-container div {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background-color: #ffddae;
+  margin: 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+} */
+
+.task-titlecard {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background-color: #ffddae;
+  margin: 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.task-status {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-status select {
+  margin-left: 20px;
+  padding: 0px 20px;
+}
+
+.task-detailcard {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background-color: #ffddae;
+  margin: 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: lightblue;
+  color: white;
+}
