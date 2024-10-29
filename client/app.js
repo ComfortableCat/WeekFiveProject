@@ -8,51 +8,58 @@ const passErrP = document.getElementById("passwordError");
 async function goToGroup(event) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
+  gnErrP.textContent = "";
+  dnErrP.textContent = "";
+  passErrP.textContent = "";
+  form.reset();
   console.log(data);
   if (
     //check if inputs are empty
-    data.displayName === "" ||
-    data.groupName === "" ||
-    data.password === ""
+    data.displayName !== "" &&
+    data.groupName !== "" &&
+    data.password !== ""
   ) {
-    //if empty show error
-    console.log(`data is empty`);
-  } else if (event.submitter.id === "join") {
-    const result = await fetch(
-      `http://localhost:8080/groups?groupName=${data.groupName}`
-    );
-    const groupDetails = await result.json();
-    console.log(groupDetails);
-    if (groupDetails.length === 0) {
-      //need to check for unique display name
-      form.reset();
-      gnErrP.textContent = "Group name is miss spelled or does not exist";
-    } else if (groupDetails[0].password === data.password) {
-      console.log("yippee");
-      form.reset();
-      saveAndGo(data);
+    if (data.password.length >= 6) {
+      if (event.submitter.id === "join") {
+        const result = await fetch(
+          `http://localhost:8080/groups?groupName=${data.groupName}&displayName=${data.displayName}&password=${data.password}`
+        );
+        const groupDetails = await JSON.parse(await result.json());
+        console.log(groupDetails);
+        if (groupDetails.group === "doesntExist") {
+          gnErrP.textContent = "Group name is miss spelled or does not exist";
+        } else if (groupDetails.password === "bad") {
+          passErrP.textContent = "Password is incorrect";
+        } else {
+          saveAndGo(data);
+        }
+      } else if (event.submitter.id === "create") {
+        //create request
+
+        const result = await fetch(`http://localhost:8080/groups`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const reply = await result.json();
+        console.log(reply);
+        if (reply === "gExists") {
+          gnErrP.textContent = "Group already exists";
+        } else if (reply === "created") {
+          saveAndGo(data);
+        } else {
+          alert("unexpected create error");
+        }
+      } else {
+        alert("unexpected error");
+      }
     } else {
-      alert("unexpected join error");
-    }
-  } else if (event.submitter.id === "create") {
-    //create request
-    const result = await fetch(`http://localhost:8080/groups`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    const reply = await response.json();
-    console.log(reply);
-    if (reply === "gExists") {
-      gnErrP.textContent = "Group already exists";
-    } else {
-      saveAndGo(data);
+      passErrP.textContent = "Password must be 6 characters or more";
     }
   } else {
-    alert("unexpected error");
+    dnErrP.textContent = "Inputs cannot be empty";
   }
 }
-
 function saveAndGo(a) {
   localStorage.setItem("groupDetails", JSON.stringify(a));
   window.location.assign(
@@ -62,6 +69,6 @@ function saveAndGo(a) {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log(event.submitter.id);
+  console.log(event.submitter.id, " pressed");
   goToGroup(event);
 });

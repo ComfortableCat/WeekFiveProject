@@ -15,16 +15,63 @@ app.get("/", (req, res) => res.json("Root route"));
 
 // GROUP ROUTES //
 app.get("/groups", async (req, res) => {
-  const groupName = req.query.groupName;
-  console.log(groupName);
+  const { groupName, displayName, password } = req.query;
+  console.log(groupName, displayName, password);
+  const groupData = await groupFetch(groupName);
+  console.log(groupData);
+  const displayData = await db.query(
+    "SELECT * FROM groupmembers WHERE displayname = $1",
+    [displayName]
+  );
+  const message = {
+    group: "doesntExist",
+    password: "bad",
+  };
+  if (groupData.length !== 0) {
+    message.group = "exists";
+    console.log("exists");
+  }
+  if (groupData[0].password === password) {
+    message.password = "good";
+    console.log("good");
+  }
+  if (displayData.length !== 0) {
+    await db.query(
+      "INSERT INTO groupmembers (displayname, group_id) VALUES ($1, (SELECT id FROM taskgroups WHERE name = $2))",
+      [displayName, groupName]
+    );
+  }
+  console.log(groupData);
+  res.json(JSON.stringify(message));
+});
+
+app.post("/groups", async (req, res) => {
+  const { displayName, groupName, password } = req.body;
+  const groupData = await groupFetch(groupName);
+  if (groupData.length === 0) {
+    console.log("add to db");
+    await db.query("INSERT INTO taskgroups (name,password) VALUES ($1,$2)", [
+      groupName,
+      password,
+    ]);
+    await db.query(
+      "INSERT INTO groupmembers (displayname, group_id) VALUES ($1, (SELECT id FROM taskgroups WHERE name = $2))",
+      [displayName, groupName]
+    );
+    res.json("created");
+    //ADD STUFF TO DATABASE
+  } else {
+    res.json("gExists");
+  }
+});
+
+async function groupFetch(groupName) {
   const result = await db.query("SELECT * FROM taskgroups WHERE name = $1", [
     groupName,
   ]);
   const groupData = result.rows;
-  console.log(groupData);
-  res.json(groupData);
-});
-
+  return groupData;
+}
 // MEMBER ROUTES //
 
 // TASK ROUTES //
