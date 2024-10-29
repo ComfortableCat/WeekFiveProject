@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Page</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" type="module" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="projects-page">Project</a></li>
+          <li><a href="calender-page">Calendar</a></li>
+          <li><a href="chat-page">Chat</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="task-container">
+        <!-- Section for displaying task name and current status -->
+        <div class="task-titlecard">
+          <div class="task-status">
+            <label for="task-status">Status: </label>
+            <select name="task-status" id="task-status">
+              <option value="todo">To Do</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done!</option>
+            </select>
+          </div>
+          <label for="task-name">Task: </label>
+          <input type="text" id="task-name" name="name" />
+        </div>
+        <!-- Section for displaying task details such as assignees, task details and due date -->
+        <div class="task-detailcard">
+          <div>
+            <label for="assignee">Assigned to: </label>
+            <input type="text" id="assignee" />
+          </div>
+          <div>
+            <label for="details">Details: </label>
+            <textarea id="details" rows="10" cols="20"></textarea>
+          </div>
+          <div>
+            <label for="due">Due by: </label>
+            <input type="date" id="due" />
+          </div>
+        </div>
+        <!-- Section for displaying the view in calendar button -->
+        <div class="task-buttons">
+          <button id="task-update-btn">Update Task</button>
+          <button id="task-calendar-btn">View In Calendar</button>
+        </div>
+      </div>
+    </main>
+    <footer><p>Copyright placeholder</p></footer>
+  </body>
+</html>

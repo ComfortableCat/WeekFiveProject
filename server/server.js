@@ -106,9 +106,16 @@ app.post("/tasks", async function (req, res) {
 // Update task
 app.put("/tasks", async function (req, res) {
   const data = req.body;
-  const result = await db.query("UPDATE tasks SET status = $1 WHERE id = $2", [
-    data,
-  ]);
+  const id = data[0];
+  const name = data[1];
+  const status = data[2];
+  const member_id = data[3];
+  const description = data[4];
+  const duedate = data[5];
+  const result = await db.query(
+    "UPDATE tasks SET name = $1, status = $2, member_id = $3, description = $4, duedate = $5 WHERE id = $1",
+    [id, name, status, member_id, description, duedate]
+  );
 });
 
 // Delete task
