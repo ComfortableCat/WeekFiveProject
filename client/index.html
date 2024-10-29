@@ -4,13 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script type="module" src="./app.js" defer></script>
   </head>
   <body>
     <main>
       <h1>Welcome to LoopIn</h1>
       <form>
+        <p id="displayNameError"></p>
         <input type="text" name="displayName" placeholder="Display name" />
+        <p id="groupNameError"></p>
         <input type="text" name="groupName" placeholder="Group name" />
+        <p id="passwordError"></p>
         <input type="password" name="password" placeholder="Password" />
         <button type="submit" id="join">Join</button>
         <button type="submit" id="create">Create</button>
