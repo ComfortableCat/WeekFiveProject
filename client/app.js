@@ -24,14 +24,18 @@ async function goToGroup(event) {
         const result = await fetch(
           `http://localhost:8080/groups?groupName=${data.groupName}&displayName=${data.displayName}&password=${data.password}`
         );
-        const groupDetails = await JSON.parse(await result.json());
-        console.log(groupDetails);
-        if (groupDetails.group === "doesntExist") {
+        const reply = await result.json();
+        console.log(reply.message);
+        debugger;
+        console.log(Object.keys(reply).length);
+        if (reply.message.group === "doesntExist") {
           gnErrP.textContent = "Group name is miss spelled or does not exist";
-        } else if (groupDetails.password === "bad") {
+        } else if (reply.message.password === "bad") {
           passErrP.textContent = "Password is incorrect";
+        } else if (Object.keys(reply).length === 3) {
+          saveAndGo(reply);
         } else {
-          saveAndGo(data);
+          alert("unexpected join error");
         }
       } else if (event.submitter.id === "create") {
         //create request
@@ -42,10 +46,9 @@ async function goToGroup(event) {
           body: JSON.stringify(data),
         });
         const reply = await result.json();
-        console.log(reply);
         if (reply === "gExists") {
           gnErrP.textContent = "Group already exists";
-        } else if (reply === "created") {
+        } else if (Object.keys(reply).length === 2) {
           saveAndGo(data);
         } else {
           alert("unexpected create error");
@@ -61,9 +64,12 @@ async function goToGroup(event) {
   }
 }
 function saveAndGo(a) {
-  localStorage.setItem("groupDetails", JSON.stringify(a));
+  localStorage.setItem(
+    "details",
+    JSON.stringify({ group: a.group, member: a.member })
+  );
   window.location.assign(
-    `https://LoopIn.onrender.com/projects?groupName=${a.groupName}`
+    `https://LoopIn.onrender.com/projects?groupName=${a.group.groupName}`
   );
 }
 
