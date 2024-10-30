@@ -9,9 +9,10 @@
   </head>
   <body>
     <header>
+      <h2>Loopin</h2>
       <nav>
         <ul>
-          <li><a href="projects-page">Project</a></li>
+          <li><a href="http://localhost:5173/projectPage/">Project</a></li>
           <li><a href="calender-page">Calendar</a></li>
           <li><a href="chat-page">Chat</a></li>
         </ul>
@@ -21,7 +22,7 @@
       <div class="task-container">
         <!-- Section for displaying task name and current status -->
         <div class="task-titlecard">
-          <div>
+          <div class="task-name">
             <label for="task-name">Task: </label>
             <input type="text" id="task-name" name="name" />
           </div>
@@ -44,15 +45,15 @@
         </div>
         <!-- Section for displaying task details such as assignees, task details and due date -->
         <div class="task-detailcard">
-          <div>
+          <div class="task-assignee">
             <label for="assignee">Assigned to: </label>
             <input type="text" id="assignee" />
           </div>
-          <div>
+          <div class="task-details">
             <label for="details">Details: </label>
-            <textarea id="details" rows="10" cols="20"></textarea>
+            <textarea id="details" rows="10" cols="40"></textarea>
           </div>
-          <div>
+          <div class="task-due">
             <label for="due">Due by: </label>
             <input type="date" id="due" />
           </div>
