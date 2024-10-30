@@ -20,6 +20,7 @@ app.get("/groups", async (req, res) => {
   const groupData = await groupFetch(groupName);
   console.log(groupData);
   const displayData = await db.query(
+    ///CHANGE TO GROUP_ID
     "SELECT * FROM groupmembers WHERE displayname = $1",
     [displayName]
   );
