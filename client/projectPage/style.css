@@ -16,7 +16,6 @@
   flex-wrap: wrap;
   justify-content: left;
   align-items: left;
-  width: 30vw;
 }
 
 body {
@@ -27,8 +26,9 @@ body {
 }
 
 header {
+  position: relative;
+  height: 13vh;
   background-color: var(--primary-color);
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +45,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
 }
 
 nav ul {
@@ -62,7 +61,7 @@ nav ul li a {
   text-decoration: none;
   color: var(--accent-color);
   font-weight: bold;
-  font-size: 2.25vw;
+  font-size: 1rem;
 }
 
 nav ul li a:hover {
@@ -70,14 +69,16 @@ nav ul li a:hover {
 }
 
 #membersBtn {
+  position: absolute;
+  bottom: 4px;
+  right: 1vw;
   background-color: var(--highlight-color);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
-  margin-left: auto;
 }
 #membersBtn:hover {
   background-color: var(--secondary-color);
@@ -105,6 +106,7 @@ nav ul li a:hover {
 .memberName {
   color: var(--secondary-color);
   padding: 0.5rem 0;
+  font-size: 1rem;
 }
 
 main {
@@ -118,9 +120,11 @@ form {
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
-  margin: 2rem auto;
 }
 
+form h1 {
+  margin: 0;
+}
 input,
 select,
 button {
@@ -144,6 +148,7 @@ button#submit:hover {
 footer {
   position: fixed;
   bottom: 0;
+  height: 10vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -153,16 +158,12 @@ footer {
 
 #returned-container {
   color: white;
-  gap: 0rem;
   width: 100%;
-  margin: 2rem auto;
-  padding: 2px;
   border-radius: 10px;
-  padding: 0.5rem;
   font-weight: bold;
 }
 #returned-container p {
-  font-size: 4vw;
+  font-size: 5vw;
   margin: 0;
   padding-bottom: 1vh;
 }
@@ -171,7 +172,7 @@ footer {
   color: rgb(117, 215, 150);
   text-decoration: none;
   padding: 0.5vh;
-  font-size: 2vh;
+  font-size: 4vw;
 }
 
 #ToDo {
@@ -197,29 +198,23 @@ footer {
   padding: 2vh;
 }
 
-@media (min-width: 800px) {
-  main {
-    width: 540px;
-  }
-}
-
 #toggleActive {
   position: fixed;
-  bottom: 65px;
-  left: 10px;
-  background-image: url("plus\ \(1\).webp");
-  width: 60px;
-  height: 60px;
+  bottom: 11.25vh;
+  left: 1.25vh;
+  background-image: url("./plus.webp");
+  width: 50px;
+  height: 50px;
   background-color: var(--highlight-color);
   background-position: center;
-  background-size: 45px 45px;
+  background-size: 40px 40px;
   background-repeat: no-repeat;
   border: 0;
   border-radius: 40px;
 }
 
 #toggleActive:hover {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   cursor: pointer;
 }
 
@@ -231,4 +226,16 @@ footer {
   padding: 0;
   border: 0;
   gap: 0;
+}
+
+@media (min-width: 800px) {
+  main {
+    width: 540px;
+  }
+  #returned-container p {
+    font-size: 40px;
+  }
+  #returned-container a {
+    font-size: 32px;
+  }
 }
