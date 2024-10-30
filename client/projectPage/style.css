@@ -22,6 +22,7 @@
 body {
   background-color: var(--background-color);
   color: var(--accent-color);
+  font-family: monospace;
 }
 
 header {
@@ -29,7 +30,7 @@ header {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  /align-items: center;
+  align-items: center;
 }
 
 header h2 {
@@ -146,13 +147,26 @@ footer {
   justify-content: center;
 }
 
-.returned-container {
-  display: flex;
-  flex-direction: coloumn;
-  flex-wrap: wrap;
-  justify-content: left;
-  align-items: left;
-  padding: 6px 20px;
-  border: 2px solid rgb(196, 33, 180);
-  color: rgb(15, 157, 65);
+#returned-container {
+  color: white;
+  gap: 0rem;
+  max-width: 250px;
+  margin: 2rem auto;
+  padding: 2px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+#ToDo {
+  background-color: var(--highlight-color);
+  font-weight: bold;
+}
+#Doing {
+  background-color: var(--secondary-color);
+  font-weight: bold;
+}
+
+#Done {
+  background-color: var(--accent-color);
 }
