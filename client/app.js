@@ -12,7 +12,6 @@ async function goToGroup(event) {
   dnErrP.textContent = "";
   passErrP.textContent = "";
   form.reset();
-  console.log(data);
   if (
     //check if inputs are empty
     data.displayName !== "" &&
@@ -25,9 +24,6 @@ async function goToGroup(event) {
           `http://localhost:8080/groups?groupName=${data.groupName}&displayName=${data.displayName}&password=${data.password}`
         );
         const reply = await result.json();
-        console.log(reply.message);
-        debugger;
-        console.log(Object.keys(reply).length);
         if (reply.message.group === "doesntExist") {
           gnErrP.textContent = "Group name is miss spelled or does not exist";
         } else if (reply.message.password === "bad") {
@@ -69,9 +65,7 @@ function saveAndGo(a) {
     "details",
     JSON.stringify({ group: a.group, member: a.member })
   );
-  window.location.assign(
-    `http://127.0.0.1:5173/projectPage/?groupName=${a.group.groupName}`
-  );
+  window.location.assign(`http://127.0.0.1:5173/projectPage/`);
 }
 
 form.addEventListener("submit", (event) => {
