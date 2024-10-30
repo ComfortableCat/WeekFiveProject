@@ -50,7 +50,8 @@ function taskToPage(task) {
     const status = task.status;
     const a = document.createElement("a");
     a.textContent = `${name}`;
-    a.href = `http://127.0.0.1:5173?name=${task.name}`;
+    // a.href = `http://127.0.0.1:5173/task/?name=${task.name}`;
+    a.href = `http://127.0.0.1:5173/task/?id=${task.id}`;
     if (status === "todo") {
       ToDo.appendChild(a);
     } else if (status === "doing") {
@@ -101,4 +102,3 @@ function drawMember(member) {
   p.textContent = member.displayname;
   documentFrag.appendChild(p);
 }
-
