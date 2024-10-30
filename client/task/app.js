@@ -1,4 +1,7 @@
+//retrieve from LocalStorage
+const groupDetails = JSON.parse(localStorage.getItem("details"));
 // Get DOM Nodes
+const groupTitle = document.getElementById("groupTitle");
 const taskName = document.getElementById("task-name");
 const taskStatus = document.getElementById("task-status");
 const taskPriority = document.getElementById("task-priority");
@@ -9,6 +12,9 @@ const taskButtons = document.getElementById("task-buttons");
 const taskUpdateBtn = document.getElementById("task-update-btn");
 const taskDeleteBtn = document.getElementById("task-delete-btn");
 const taskViewCalendar = document.getElementById("task-calendar-btn");
+
+//Add Page Title
+groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 
 // Receive task ID as search parameter passed when redirected from project page
 const searchParam = new URLSearchParams(window.location.search);

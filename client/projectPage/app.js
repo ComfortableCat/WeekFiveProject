@@ -1,9 +1,7 @@
 const taskContainer = document.getElementById("task-container");
 const returnedContainer = document.getElementById("returned-container");
 const form = document.querySelector("form");
-const groupDetails = JSON.parse(localStorage.getItem("details")) || {
-  group: [{ id: 2, name: "TestName2", password: "TestPassword2" }],
-};
+const groupDetails = JSON.parse(localStorage.getItem("details"));
 const membersBtn = document.getElementById("membersBtn");
 const main = document.querySelector("main");
 let membersCreateCheck = true;
@@ -14,7 +12,7 @@ const Done = document.getElementById("Done");
 const groupTitle = document.getElementById("groupTitle");
 const toggleActive = document.getElementById("toggleActive");
 
-groupTitle.textContent = `${groupDetails["group"][0].name}`;
+groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 toggleActive.addEventListener("click", () => {
   taskContainer.classList.toggle("notActive");
   returnedContainer.classList.toggle("notActive");
