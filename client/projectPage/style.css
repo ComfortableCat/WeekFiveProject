@@ -16,6 +16,13 @@
   flex-wrap: wrap;
   justify-content: left;
   align-items: left;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  margin: 20px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  border: 2px solid var(--secondary-color);
 }
 
 body {
@@ -48,20 +55,20 @@ nav {
 }
 
 nav ul {
-  padding: 0;
   list-style: none;
   display: flex;
   gap: 3vw;
   margin: 0;
+  padding: 0;
   justify-content: center;
   flex: 1;
 }
 
 nav ul li a {
+  font-size: 1rem;
   text-decoration: none;
   color: var(--accent-color);
   font-weight: bold;
-  font-size: 1rem;
 }
 
 nav ul li a:hover {
@@ -152,7 +159,7 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
   background-color: var(--primary-color);
 }
 

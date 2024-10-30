@@ -20,12 +20,18 @@ body {
 }
 
 header {
-  width: 100%;
-  z-index: 1000;
+  position: relative;
+  height: 13vh;
   background-color: var(--primary-color);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  color: var(--accent-color);
+  text-align: center;
 }
 
 main {
@@ -44,7 +50,8 @@ h2 {
   text-align: center;
   font-size: 6vw;
   width: inherit;
-  background-color: var(--highlight-color);
+  background-color: var(--primary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 4vh;
   padding-top: 4vh;
   padding-bottom: 4vh;
@@ -53,7 +60,8 @@ h2 {
 
 form {
   width: inherit;
-  background-color: var(--highlight-color);
+  background-color: var(--primary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 4vh;
   display: flex;
   flex-direction: column;
@@ -71,11 +79,14 @@ form input {
 
 form button {
   width: 30%;
-  background-color: var(--secondary-color);
+  background-color: var(--highlight-color);
+  border: 1px solid var(--primary-color);
+  color: var(--background-color);
   margin: 0.5vh;
   border-radius: 2vh;
-  border: transparent;
-  padding: 1vh;
+  padding: 5px;
+  font-size: 18px;
+  font-family: monospace;
 }
 
 form button:hover {
@@ -86,11 +97,11 @@ form button:hover {
 footer {
   position: fixed;
   bottom: 0;
-  width: 100%;
   height: 10vh;
+  width: 100%;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
   background-color: var(--primary-color);
 }
 
