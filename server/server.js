@@ -98,9 +98,9 @@ app.get("/members", async (req, res) => {
 });
 
 // TASK ROUTES //
-// Retrieve tasks
+// Retrieve tasks and associated members assigned
 app.get("/tasks", async function (req, res) {
-  const result = await db.query("SELECT * FROM tasks");
+  const result = await db.query("SELECT * FROM tasks;");
   const tasks = result.rows;
   res.json(tasks);
 });
@@ -119,12 +119,13 @@ app.put("/tasks", async function (req, res) {
   const id = req.body[0];
   const name = req.body[1];
   const status = req.body[2];
-  const member_id = req.body[3];
-  const description = req.body[4];
-  const duedate = req.body[5];
+  const priority = req.body[3];
+  const member_id = req.body[4];
+  const description = req.body[5];
+  const duedate = req.body[6];
   const result = await db.query(
-    "UPDATE tasks SET name = $1, description = $2, status = $3, duedate = $4, member_id = $5 WHERE id = $6",
-    [name, description, status, duedate, member_id, id]
+    "UPDATE tasks SET name = $1, description = $2, status = $3, duedate = $4, priority = $5, member_id = $6 WHERE id = $7",
+    [name, description, status, duedate, priority, member_id, id]
   );
 });
 
