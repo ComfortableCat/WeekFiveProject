@@ -8,6 +8,12 @@ const membersBtn = document.getElementById("membersBtn");
 const main = document.querySelector("main");
 let membersCreateCheck = true;
 const documentFrag = document.createDocumentFragment();
+const ToDo = document.getElementById("ToDo");
+const Doing = document.getElementById("Doing");
+const Done = document.getElementById("Done");
+const groupTitle = document.getElementById("groupTitle");
+
+groupTitle.textContent = `${groupDetails["group"][0].name}`;
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -29,6 +35,7 @@ async function handleSubmit(event) {
 form.addEventListener("submit", (event) => {
   handleSubmit(event);
   form.reset();
+  getTask();
 });
 
 getTask();
@@ -36,6 +43,18 @@ getTask();
 // const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
 // const response = await fetch("http://localhost:8080/tasks", {
 async function getTask() {
+  ToDo.replaceChildren();
+  Doing.replaceChildren();
+  Done.replaceChildren();
+  const toDoP = document.createElement("p");
+  const doingP = document.createElement("p");
+  const doneP = document.createElement("p");
+  toDoP.textContent = "To Do";
+  ToDo.appendChild(toDoP);
+  doingP.textContent = "Doing";
+  Doing.appendChild(doingP);
+  doneP.textContent = "Done";
+  Done.appendChild(doneP);
   const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
     method: "GET",
   });
@@ -49,9 +68,7 @@ async function getTask() {
 function taskToPage(task) {
   if (task["group_id"] === groupDetails["group"][0].id) {
     console.log(task);
-    const ToDo = document.getElementById("ToDo");
-    const Doing = document.getElementById("Doing");
-    const Done = document.getElementById("Done");
+
     const name = task.name;
     const status = task.status;
     const a = document.createElement("a");

@@ -16,10 +16,11 @@
   flex-wrap: wrap;
   justify-content: left;
   align-items: left;
-  width: 30%;
+  width: 30vw;
 }
 
 body {
+  margin: 0;
   background-color: var(--background-color);
   color: var(--accent-color);
   font-family: monospace;
@@ -33,7 +34,7 @@ header {
   align-items: center;
 }
 
-header h2 {
+header h1 {
   color: var(--accent-color);
   margin-bottom: 0.5rem;
   text-align: center;
@@ -48,9 +49,10 @@ nav {
 }
 
 nav ul {
+  padding: 0;
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 3vw;
   margin: 0;
   justify-content: center;
   flex: 1;
@@ -60,6 +62,7 @@ nav ul li a {
   text-decoration: none;
   color: var(--accent-color);
   font-weight: bold;
+  font-size: 2.25vw;
 }
 
 nav ul li a:hover {
@@ -75,9 +78,6 @@ nav ul li a:hover {
   border-radius: 5px;
   font-weight: bold;
   margin-left: auto;
-  position: fixed;
-  top: 80px;
-  right: 20px;
 }
 #membersBtn:hover {
   background-color: var(--secondary-color);
@@ -108,7 +108,8 @@ nav ul li a:hover {
 }
 
 main {
-  padding: 1rem;
+  width: 66.66vw;
+  margin: auto;
   text-align: center;
 }
 
@@ -116,8 +117,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  max-width: 500px;
-
+  width: 100%;
   margin: 2rem auto;
 }
 
@@ -142,34 +142,63 @@ button#submit:hover {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding: 20px;
+  background-color: var(--primary-color);
 }
 
 #returned-container {
   color: white;
   gap: 0rem;
-  max-width: 250px;
+  width: 100%;
   margin: 2rem auto;
   padding: 2px;
   border-radius: 10px;
   padding: 0.5rem;
   font-weight: bold;
 }
+#returned-container p {
+  font-size: 4vw;
+  margin: 0;
+  padding-bottom: 1vh;
+}
+
+#returned-container a {
+  color: rgb(117, 215, 150);
+  text-decoration: none;
+  padding: 0.5vh;
+  font-size: 2vh;
+}
 
 #ToDo {
   background-color: var(--highlight-color);
-  font-weight: bold;
-  border-radius: 5px;
 }
 #Doing {
   background-color: var(--secondary-color);
-  font-weight: bold;
-  border-radius: 5px;
 }
 
 #Done {
   background-color: var(--accent-color);
+}
+
+#ToDo,
+#Doing,
+#Done {
   border-radius: 5px;
+  font-weight: bold;
+  min-height: 45px;
+  display: flex;
+  flex-direction: column;
+  margin: 2vh;
+  padding: 2vh;
+}
+
+@media (min-width: 800px) {
+  main {
+    width: 540px;
+  }
 }
