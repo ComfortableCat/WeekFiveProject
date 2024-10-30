@@ -6,11 +6,19 @@
   --background-color: #f8f4f1; /* bg colour off white */
 }
 
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: monospace;
+}
+
+#task-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: left;
+  width: 30%;
+
 }
 
 body {
@@ -138,4 +146,15 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.returned-container {
+  display: flex;
+  flex-direction: coloumn;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: left;
+  padding: 6px 20px;
+  border: 2px solid rgb(196, 33, 180);
+  color: rgb(15, 157, 65);
 }

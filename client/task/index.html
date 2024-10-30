@@ -21,16 +21,26 @@
       <div class="task-container">
         <!-- Section for displaying task name and current status -->
         <div class="task-titlecard">
+          <div>
+            <label for="task-name">Task: </label>
+            <input type="text" id="task-name" name="name" />
+          </div>
           <div class="task-status">
             <label for="task-status">Status: </label>
             <select name="task-status" id="task-status">
               <option value="todo">To Do</option>
               <option value="doing">Doing</option>
-              <option value="done">Done!</option>
+              <option value="done">Done</option>
             </select>
           </div>
-          <label for="task-name">Task: </label>
-          <input type="text" id="task-name" name="name" />
+          <div class="task-priority">
+            <label for="task-priority">Task Priority: </label>
+            <select name="task-priority" id="task-priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
         </div>
         <!-- Section for displaying task details such as assignees, task details and due date -->
         <div class="task-detailcard">
@@ -48,8 +58,9 @@
           </div>
         </div>
         <!-- Section for displaying the view in calendar button -->
-        <div class="task-buttons">
+        <div id="task-buttons">
           <button id="task-update-btn">Update Task</button>
+          <button id="task-delete-btn">Delete Task</button>
           <button id="task-calendar-btn">View In Calendar</button>
         </div>
       </div>

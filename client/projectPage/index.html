@@ -9,7 +9,6 @@
   </head>
   <body>
     <header>
-      <h2>Display Group Name Here</h2>
       <nav>
         <ul>
           <li><a href="projects-page">Project</a></li>
@@ -20,28 +19,46 @@
       <button id="membersBtn">Members</button>
     </header>
     <main>
-      <h1>Create Your Project Tasks</h1>
-      <form id="tasks-container">
-        <input type="text" name="tasks-name" placeholder="Task Name" />
-        <input type="text" name="tasks-descripton" placeholder="Task Details" />
-        <!--  -->
-        <label for="tasks-status">Task Status</label>
-        <select name="tasks-status" id="tasks-status">
+      <form id="task-container">
+        <h1>Create A Task</h1>
+        <!-- <div class="projectPopup"> -->
+        <p id="displayName"></p>
+        <input type="text" name="name" placeholder="Task Name" />
+        <input
+          type="description"
+          name="description"
+          placeholder="Task Details"
+        />
+        <label for="status">Task Status</label>
+        <select name="status" id="status">
           <option value="todo">To Do</option>
           <option value="doing">Doing</option>
           <option value="done">Done!</option>
         </select>
         <!--  -->
-        <input type="text" name="tasks-duedate" placeholder="Due date" />
+        <input type="date" name="duedate" placeholder="Due date" />
         <!--  -->
-        <label for="tasks-priority">Task Priority</label>
-        <select name="tasks-priority" id="Priority">
-          <option value="high">High!</option>
+        <label for="priority">Task Priority</label>
+        <select name="priority" id="Priority">
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
           <option value="low">Low</option>
         </select>
         <button type="submit" id="submit">Add Task to Project</button>
       </form>
+      <div id="returned-container">
+        <div id="ToDo">
+          <p>To Do</p>
+        </div>
+
+        <div id="Doing">
+          <p>Doing</p>
+        </div>
+
+        <div id="Done">
+          <p>Done!</p>
+        </div>
+      </div>
     </main>
-    <footer>Copyright 2024</footer>
   </body>
 </html>
