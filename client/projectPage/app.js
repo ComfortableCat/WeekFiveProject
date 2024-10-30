@@ -74,11 +74,9 @@ async function loadMembers() {
     membersP.id = "membersP";
     membersP.textContent = "These are the members in your group";
     membersDiv.appendChild(membersP);
-    //need to change
-    const groupId = 1;
-    //
+
     const response = await fetch(
-      `http://localhost:8080/members?groupId=${groupId}`
+      `http://localhost:8080/members?groupId=${groupDetails["group"][0].id}`
     );
     const members = await response.json();
     console.log("JSON data:", members);
@@ -101,4 +99,3 @@ function drawMember(member) {
   p.textContent = member.displayname;
   documentFrag.appendChild(p);
 }
-
