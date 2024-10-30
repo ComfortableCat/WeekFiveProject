@@ -14,8 +14,10 @@ async function handleSubmit(event) {
 
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData);
+  formObj.groupId = groupDetails["group"][0].id;
+  console.log(formObj);
 
-  const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
+  const response = await fetch("http://localhost:8080/tasks", {
     //This works - don't touch
     method: "POST",
     headers: { "Content-Type": "application/json" },

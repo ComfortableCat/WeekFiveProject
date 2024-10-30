@@ -161,12 +161,15 @@ footer {
 #ToDo {
   background-color: var(--highlight-color);
   font-weight: bold;
+  border-radius: 5px;
 }
 #Doing {
   background-color: var(--secondary-color);
   font-weight: bold;
+  border-radius: 5px;
 }
 
 #Done {
   background-color: var(--accent-color);
+  border-radius: 5px;
 }
