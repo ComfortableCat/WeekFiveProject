@@ -97,10 +97,12 @@ app.get("/tasks", async function (req, res) {
 // Post new task
 app.post("/tasks", async function (req, res) {
   const { name, description, status, duedate, priority, groupId } = req.body;
-  const result = await db.query(
-    "INSERT INTO tasks (name, description, status, duedate, priority, group_id) VALUES ($1, $2, $3, $4, $5, $6)",
-    [name, description, status, duedate, priority, groupId]
-  );
+  console.log(req.body);
+  //const result = await db.query(
+  //    "INSERT INTO tasks (name, description, status, duedate, priority, group_id) VALUES ($1, $2, $3, $4, $5, $6)",
+  //  [name, description, status, duedate, priority, groupId]
+  //);
+  console.log("Yay");
 });
 
 // Update task

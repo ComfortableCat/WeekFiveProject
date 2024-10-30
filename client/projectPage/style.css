@@ -3,7 +3,7 @@
   background-color: rgb(255, 149, 0);
 }*/
 
-#tasks-container {
+#task-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -61,4 +61,15 @@ footer {
   padding: 20px;
   background-color: lightblue;
   color: white;
+}
+
+.returned-container {
+  display: flex;
+  flex-direction: coloumn;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: left;
+  padding: 6px 20px;
+  border: 2px solid rgb(196, 33, 180);
+  color: rgb(15, 157, 65);
 }

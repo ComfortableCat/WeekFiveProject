@@ -1,39 +1,58 @@
-const tasksContainer = document.getElementById("tasks-container");
+const taskContainer = document.getElementById("tasks-container");
+const returnedContainer = document.getElementById("returned-container");
 const form = document.querySelector("form");
+const groupDetails = JSON.parse(localStorage.getItem("details")) || {
+  group: [{ id: 2, name: "TestName2", password: "TestPassword2" }],
+};
 
 async function handleSubmit(event) {
   event.preventDefault();
 
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData);
-  console.log(data);
 
-  const response = await fetch("http://localhost:8080/Tasks", {
+  const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
+    //This works - don't touch
     method: "POST",
-    body: JSON.stringify(formObj),
     headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formObj),
   });
   const data = await response.json();
   console.log(data);
 }
-form.addEventListener("submit", handleSubmit);
+form.addEventListener("submit", (event) => handleSubmit(event));
+// Add form.reset();
+getTask();
 
-// OTHER TASKS -AS PROJECT SUMMARIES- NEED TO SHOW ON THE SCREEN
-async function getTasks() {
-  const response = await fetch("server address here");
-  const tasks = await response.json();
+//const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
+async function getTask() {
+  const response = await fetch("http://localhost:8080/tasks", {
+    method: "GET",
+  });
+  const taskData = await response.json();
+  console.log(taskData);
 
-  for (let i = 0; i < tasks.length; i++) {
-    const name = tasks[i].username;
-    const description = tasks[i].description;
-    const status = tasks[i].status;
-    const duedate = tasks[i].duedate;
-    const priority = tasks[i].priority;
+  taskData.forEach(taskToPage);
+}
 
-    const p = document.createElement("p");
-    p.textContent = `${status} ${name} ${description}`;
-
-    tasksContainer.appendChild(p);
+// getTasks();
+function taskToPage(task) {
+  if (task["group_id"] === groupDetails["group"][0].id) {
+    console.log(task);
+    const ToDo = document.getElementById("ToDo");
+    const Doing = document.getElementById("Doing");
+    const Done = document.getElementById("Done");
+    const name = task.name;
+    const status = task.status;
+    const a = document.createElement("a");
+    a.textContent = `${name}`;
+    a.href = `http://127.0.0.1:5173?name=${task.name}`;
+    if (status === "todo") {
+      ToDo.appendChild(a);
+    } else if (status === "doing") {
+      Doing.appendChild(a);
+    } else if (status === "done") {
+      Done.appendChild(a);
+    }
   }
 }
-gettasks();
