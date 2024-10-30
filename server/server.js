@@ -85,6 +85,16 @@ async function groupFetch(groupName) {
   return groupData;
 }
 // MEMBER ROUTES //
+app.get("/members", async (req, res) => {
+  const groupId = req.query;
+  console.log(groupId);
+  const result = await db.query(
+    "SELECT * FROM groupmembers WHERE group_id = $1",
+    [Number(groupId.groupId)]
+  );
+  const members = result.rows;
+  res.json(members);
+});
 
 // TASK ROUTES //
 // Retrieve tasks
