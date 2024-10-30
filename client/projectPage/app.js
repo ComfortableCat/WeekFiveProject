@@ -1,5 +1,9 @@
 const tasksContainer = document.getElementById("tasks-container");
 const form = document.querySelector("form");
+const membersBtn = document.getElementById("membersBtn");
+const main = document.querySelector("main");
+let membersCreateCheck = true;
+const documentFrag = document.createDocumentFragment();
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -36,4 +40,43 @@ async function getTasks() {
     tasksContainer.appendChild(p);
   }
 }
-gettasks();
+// getTasks();
+
+membersBtn.addEventListener("click", loadMembers);
+
+async function loadMembers() {
+  if (membersCreateCheck === true) {
+    membersCreateCheck = false;
+    const membersDiv = document.createElement("div");
+    const membersP = document.createElement("p");
+    membersDiv.id = "membersDiv";
+    membersP.id = "membersP";
+    membersP.textContent = "These are the members in your group";
+    membersDiv.appendChild(membersP);
+    //need to change
+    const groupId = 1;
+    //
+    const response = await fetch(
+      `http://localhost:8080/members?groupId=${groupId}`
+    );
+    const members = await response.json();
+    console.log("JSON data:", members);
+    documentFrag.replaceChildren();
+    members.forEach(drawMember);
+    membersDiv.appendChild(documentFrag);
+    //
+    //
+    main.appendChild(membersDiv);
+  } else {
+    const membersDiv = document.getElementById("membersDiv");
+    membersDiv.remove();
+    membersCreateCheck = true;
+  }
+}
+function drawMember(member) {
+  console.log(member);
+  const p = document.createElement("p");
+  p.className = "memberName";
+  p.textContent = member.displayname;
+  documentFrag.appendChild(p);
+}

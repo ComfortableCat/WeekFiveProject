@@ -88,7 +88,7 @@ async function groupFetch(groupName) {
 // MEMBER ROUTES //
 app.get("/members", async (req, res) => {
   const groupId = req.query;
-  console.log(groupId);
+
   const result = await db.query(
     "SELECT * FROM groupmembers WHERE group_id = $1",
     [Number(groupId.groupId)]
