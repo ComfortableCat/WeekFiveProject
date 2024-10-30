@@ -24,19 +24,23 @@ async function handleSubmit(event) {
   const data = await response.json();
   console.log(data);
 }
-form.addEventListener("submit", (event) => handleSubmit(event));
-// Add form.reset();
+form.addEventListener("submit", (event) => {
+  handleSubmit(event);
+  form.reset();
+});
+
 getTask();
 
-//const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
+// const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
+// const response = await fetch("http://localhost:8080/tasks", {
 async function getTask() {
-  const response = await fetch("http://localhost:8080/tasks", {
+  const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
     method: "GET",
   });
   const taskData = await response.json();
   console.log(taskData);
 
-  taskData.forEach(taskToPage);
+  taskData.forEach(taskToPage); //curr only 1 obj
 }
 
 // getTasks();

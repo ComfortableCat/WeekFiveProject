@@ -19,9 +19,24 @@
       <button id="membersBtn">Members</button>
     </header>
     <main>
+      <!--  -->
+      <div id="returned-container">
+        <div id="ToDo">
+          <p>To Do</p>
+        </div>
+
+        <div id="Doing">
+          <p>Doing</p>
+        </div>
+
+        <div id="Done">
+          <p>Done!</p>
+        </div>
+      </div>
+      <!--  -->
+
       <form id="task-container">
         <h1>Create A Task</h1>
-        <!-- <div class="projectPopup"> -->
         <p id="displayName"></p>
         <input type="text" name="name" placeholder="Task Name" />
         <input
@@ -36,6 +51,7 @@
           <option value="done">Done!</option>
         </select>
         <!--  -->
+        <label for="due">Due Date</label>
         <input type="date" name="duedate" placeholder="Due date" />
         <!--  -->
         <label for="priority">Task Priority</label>
@@ -46,19 +62,6 @@
         </select>
         <button type="submit" id="submit">Add Task to Project</button>
       </form>
-      <div id="returned-container">
-        <div id="ToDo">
-          <p>To Do</p>
-        </div>
-
-        <div id="Doing">
-          <p>Doing</p>
-        </div>
-
-        <div id="Done">
-          <p>Done!</p>
-        </div>
-      </div>
     </main>
   </body>
 </html>
