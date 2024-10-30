@@ -1,8 +1,17 @@
+:root {
+  --primary-color: #e4dddc; /* light grey */
+  --secondary-color: #6d6d72; /* medium grey */
+  --accent-color: #352208; /* brown */
+  --highlight-color: #5c9ead; /* blue */
+  --background-color: #f8f4f1; /* bg colour off white */
+}
+
 * {
   box-sizing: border-box;
 }
-
 body {
+  background-color: var(--background-color);
+  color: var(--accent-color);
   height: 100%;
   margin: 0;
   display: flex;
@@ -13,11 +22,10 @@ body {
 header {
   width: 100%;
   z-index: 1000;
-  background-color: #414288;
+  background-color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f7f7ff;
 }
 
 main {
@@ -36,16 +44,16 @@ h2 {
   text-align: center;
   font-size: 6vw;
   width: inherit;
-  background-color: #352208;
+  background-color: var(--highlight-color);
   border-radius: 4vh;
   padding-top: 4vh;
   padding-bottom: 4vh;
-  color: #efcb68;
+  color: var(--accent-color);
 }
 
 form {
   width: inherit;
-  background-color: #352208;
+  background-color: var(--highlight-color);
   border-radius: 4vh;
   display: flex;
   flex-direction: column;
@@ -53,17 +61,17 @@ form {
   padding: 0.5vh;
 }
 form p {
-  color: #efcb68;
+  color: var(--accent-color);
 }
 
 form input {
-  width: 75%;
+  width: 70%;
   margin: 0.5vh;
 }
 
 form button {
   width: 30%;
-  background-color: #5c9ead;
+  background-color: var(--secondary-color);
   margin: 0.5vh;
   border-radius: 2vh;
   border: transparent;
@@ -72,7 +80,7 @@ form button {
 
 form button:hover {
   cursor: pointer;
-  background-color: #414288;
+  background-color: var(--highlight-color);
 }
 
 footer {
@@ -82,8 +90,7 @@ footer {
   display: flex;
   justify-content: center;
   padding: 20px;
-  background-color: #414288;
-  color: #f7f7ff;
+  background-color: var(--primary-color);
 }
 
 @media (min-width: 800px) {

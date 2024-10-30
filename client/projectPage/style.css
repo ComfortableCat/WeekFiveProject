@@ -6,7 +6,6 @@
   --background-color: #f8f4f1; /* bg colour off white */
 }
 
-
 * {
   box-sizing: border-box;
 }
@@ -18,7 +17,6 @@
   justify-content: left;
   align-items: left;
   width: 30%;
-
 }
 
 body {
