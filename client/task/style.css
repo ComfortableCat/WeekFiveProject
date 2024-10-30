@@ -1,41 +1,68 @@
+:root {
+  --primary-color: #e4dddc; /* light grey */
+  --secondary-color: #6d6d72; /* medium grey */
+  --accent-color: #352208; /* brown */
+  --highlight-color: #5c9ead; /* blue */
+  --background-color: #f8f4f1; /* bg colour off white */
+}
+* {
+  box-sizing: border-box;
+}
+
 body {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
   font-family: monospace;
+  background-color: var(--background-color);
+  color: var(--accent-color);
 }
 
 header {
-  position: fixed;
-  top: 0;
+  background-color: var(--primary-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header h2 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  z-index: 1000;
-  background-color: lightblue;
+  max-width: 1200px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  justify-content: center;
+  flex: 1;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: var(--highlight-color);
 }
 
 main {
-  flex: 1;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  overflow-y: auto;
-}
-
-ul {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 20px;
-  font-size: x-large;
-  list-style: none;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-}
-
-a:hover {
-  color: black;
+  padding: 1rem;
+  text-align: center;
 }
 
 .task-container {
@@ -43,56 +70,127 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  font-size: 20px;
 }
 
-/* .task-container div {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  background-color: #ffddae;
-  margin: 20px;
-  border-radius: 10px;
-  border: 1px solid white;
-} */
+.task-container label {
+  padding: 5px 0px;
+}
 
 .task-titlecard {
-  width: 60%;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  justify-content: center;
   align-items: center;
-  background-color: #ffddae;
+  text-align: center;
+  background-color: #e4dddc;
+  color: #352208;
   margin: 20px;
+  padding: 20px 10px;
   border-radius: 10px;
-  border: 1px solid white;
+  border: 2px solid #6d6d72;
+}
+
+.task-titlecard div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70vw;
+}
+
+.task-titlecard select {
+  min-width: 30vw;
+}
+
+.task-name {
+  align-items: center;
+}
+
+.task-titlecard input {
+  text-align: center;
+  padding: 2px 0px;
+  width: 50vw;
+}
+
+.task-titlecard input,
+select {
+  margin-bottom: 5px;
 }
 
 .task-status {
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
 .task-status select {
-  margin-left: 20px;
-  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  padding: 0px 10px;
+  text-align: center;
+}
+
+.task-priority {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-priority select {
+  margin-left: 10px;
+  padding: 0px 10px;
+  text-align: center;
 }
 
 .task-detailcard {
-  width: 60%;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  align-content: center;
   align-items: center;
-  background-color: #ffddae;
+  text-align: center;
+  background-color: #e4dddc;
+  color: #352208;
   margin: 20px;
+  padding: 20px 10px;
   border-radius: 10px;
-  border: 1px solid white;
+  border: 2px solid #6d6d72;
+}
+
+.task-detailcard div {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-detailcard #assignee {
+  text-align: center;
+}
+
+.task-detailcard textarea {
+  width: 70vw;
+}
+
+.task-due input {
+  min-width: 30vw;
+}
+
+#task-buttons button {
+  background-color: #5c9ead;
+  border: 1px solid #e4dddc;
+  color: #f8f4f1;
+  font-family: monospace;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#task-buttons button:hover {
+  background-color: #e4dddc;
+  border: 1px solid #352208;
+  color: #352208;
 }
 
 footer {
@@ -101,7 +199,12 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 20px;
-  background-color: lightblue;
-  color: white;
+  background-color: #e4dddc;
+  color: #352208;
 }
+
+/* footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
