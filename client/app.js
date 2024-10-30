@@ -33,6 +33,7 @@ async function goToGroup(event) {
         } else if (reply.message.password === "bad") {
           passErrP.textContent = "Password is incorrect";
         } else if (Object.keys(reply).length === 3) {
+          //TEST THIS
           saveAndGo(reply);
         } else {
           alert("unexpected join error");
