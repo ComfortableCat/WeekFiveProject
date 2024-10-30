@@ -202,3 +202,33 @@ footer {
     width: 540px;
   }
 }
+
+#toggleActive {
+  position: fixed;
+  bottom: 65px;
+  left: 10px;
+  background-image: url("plus\ \(1\).webp");
+  width: 60px;
+  height: 60px;
+  background-color: var(--highlight-color);
+  background-position: center;
+  background-size: 45px 45px;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 40px;
+}
+
+#toggleActive:hover {
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.notActive *,
+.notActive {
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+}

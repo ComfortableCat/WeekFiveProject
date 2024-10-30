@@ -1,4 +1,4 @@
-const taskContainer = document.getElementById("tasks-container");
+const taskContainer = document.getElementById("task-container");
 const returnedContainer = document.getElementById("returned-container");
 const form = document.querySelector("form");
 const groupDetails = JSON.parse(localStorage.getItem("details")) || {
@@ -12,8 +12,13 @@ const ToDo = document.getElementById("ToDo");
 const Doing = document.getElementById("Doing");
 const Done = document.getElementById("Done");
 const groupTitle = document.getElementById("groupTitle");
+const toggleActive = document.getElementById("toggleActive");
 
 groupTitle.textContent = `${groupDetails["group"][0].name}`;
+toggleActive.addEventListener("click", () => {
+  taskContainer.classList.toggle("notActive");
+  returnedContainer.classList.toggle("notActive");
+});
 
 async function handleSubmit(event) {
   event.preventDefault();
