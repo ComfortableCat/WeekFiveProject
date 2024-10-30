@@ -8,9 +8,17 @@
     <script type="module" src="./app.js" defer></script>
   </head>
   <body>
-    <main>
+    <header>
       <h2>Display Group Name Here</h2>
-
+      <nav>
+        <ul>
+          <li><a href="projects-page">Project</a></li>
+          <li><a href="calender-page">Calendar</a></li>
+          <li><a href="chat-page">Chat</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
       <h1>Create Your Project Tasks</h1>
       <form id="tasks-container">
         <input type="text" name="tasks-name" placeholder="Task Name" />
@@ -33,5 +41,6 @@
         <button type="submit" id="submit">Add Task to Project</button>
       </form>
     </main>
+    <footer>Copyright 2024</footer>
   </body>
 </html>

@@ -69,7 +69,7 @@ function saveAndGo(a) {
     JSON.stringify({ group: a.group, member: a.member })
   );
   window.location.assign(
-    `https://LoopIn.onrender.com/projects?groupName=${a.group.groupName}`
+    `http://127.0.0.1:5173/projectPage/?groupName=${a.group.groupName}`
   );
 }
 
