@@ -67,7 +67,7 @@ nav ul li a:hover {
 }
 
 main {
-  height: 113vh;
+  height: 123vh;
   text-align: center;
 }
 
@@ -160,7 +160,7 @@ select {
   flex-direction: column;
 }
 
-.task-detailcard #assignee {
+.task-detailcard #task-assignees {
   text-align: center;
 }
 
@@ -231,8 +231,12 @@ footer a:hover {
   }
 
   .task-container input,
-  textarea,
+  label,
   select {
+    font-size: 22px;
+  }
+
+  .task-detailcard textarea {
     font-size: 22px;
   }
 
@@ -243,9 +247,13 @@ footer a:hover {
 
 @media (min-width: 1400px) {
   .task-container input,
-  textarea,
+  label,
   select {
     font-size: 26px;
+  }
+
+  .task-detailcard textarea {
+    font-size: 24px;
   }
 
   .task-due input {
