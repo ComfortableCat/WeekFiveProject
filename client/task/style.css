@@ -221,42 +221,7 @@ footer a:hover {
 
 @media (min-width: 850px) {
   #task-buttons button {
-    background-color: #5c9ead;
-    border: 1px solid #e4dddc;
-    color: #f8f4f1;
-    font-family: monospace;
-    font-size: 26px;
-    border-radius: 5px;
+    font-size: 22px;
     padding: 10px;
-  }
-
-  .task-container input,
-  label,
-  select {
-    font-size: 22px;
-  }
-
-  .task-detailcard textarea {
-    font-size: 22px;
-  }
-
-  .task-due input {
-    font-size: 22px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .task-container input,
-  label,
-  select {
-    font-size: 26px;
-  }
-
-  .task-detailcard textarea {
-    font-size: 24px;
-  }
-
-  .task-due input {
-    font-size: 26px;
   }
 }
