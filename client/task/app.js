@@ -95,7 +95,7 @@ async function updateTask(event) {
   }
 
   const data = [id, name, status, priority, member_id, description, duedate];
-  console.log(data);
+  //console.log(data);
 
   const response = fetch(`https://weekfiveproject.onrender.com/tasks`, {
     method: "PUT",

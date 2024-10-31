@@ -39,7 +39,7 @@ async function handleSubmit(event) {
   const formData = new FormData(form);
   const formObj = Object.fromEntries(formData);
   formObj.groupId = groupDetails["group"][0].id;
-  console.log(formObj);
+  // console.log(formObj);
 
   const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
     //This works - don't touch
@@ -48,7 +48,7 @@ async function handleSubmit(event) {
     body: JSON.stringify(formObj),
   });
   const data = await response.json();
-  console.log(data);
+  //console.log(data);
 }
 form.addEventListener("submit", (event) => {
   handleSubmit(event);
@@ -77,7 +77,7 @@ async function getTask() {
     method: "GET",
   });
   const taskData = await response.json();
-  console.log(taskData);
+  //console.log(taskData);
 
   taskData.forEach(taskToPage); //curr only 1 obj
 }
@@ -85,7 +85,7 @@ async function getTask() {
 // getTasks();
 function taskToPage(task) {
   if (task["group_id"] === groupDetails["group"][0].id) {
-    console.log(task);
+    //console.log(task);
 
     const name = task.name;
     const status = task.status;
@@ -133,7 +133,7 @@ async function loadMembers() {
       `https://weekfiveproject.onrender.com/members?groupId=${groupDetails["group"][0].id}`
     );
     const members = await response.json();
-    console.log("JSON data:", members);
+    //console.log("JSON data:", members);
     documentFrag.replaceChildren();
     members.forEach(drawMember);
     membersDiv.appendChild(documentFrag);
@@ -147,7 +147,7 @@ async function loadMembers() {
   }
 }
 function drawMember(member) {
-  console.log(member);
+  // console.log(member);
   const p = document.createElement("p");
   p.className = "memberName";
   p.textContent = member.displayname;

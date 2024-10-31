@@ -16,9 +16,9 @@ app.get("/", (req, res) => res.json("Root route"));
 // GROUP ROUTES //
 app.get("/groups", async (req, res) => {
   const { groupName, displayName, password } = req.query;
-  console.log(groupName, displayName, password);
+  //console.log(groupName, displayName, password);
   const groupData = await groupFetch(groupName);
-  console.log(groupData);
+  // console.log(groupData);
   const displayData = await db.query(
     ///CHANGE TO GROUP_ID
     "SELECT * FROM groupmembers WHERE displayname = $1",
@@ -31,11 +31,11 @@ app.get("/groups", async (req, res) => {
   };
   if (groupData.length !== 0) {
     message.group = "exists";
-    console.log("exists");
+    // console.log("exists");
   }
   if (groupData[0].password === password) {
     message.password = "good";
-    console.log("good");
+    //  console.log("good");
   }
   if (displayData.rows.length === 0) {
     await db.query(
@@ -53,7 +53,7 @@ app.get("/groups", async (req, res) => {
   response.group = groupData;
   response.message = message;
 
-  console.log("js.49", response);
+  // console.log("js.49", response);
   res.json(response);
 });
 
@@ -114,13 +114,13 @@ app.get("/tasks", async function (req, res) {
 // Post new task
 app.post("/tasks", async function (req, res) {
   const { name, description, status, duedate, priority, groupId } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   const result = await db.query(
     "INSERT INTO tasks (name, description, status, duedate, priority, group_id) VALUES ($1, $2, $3, $4, $5, $6)",
     [name, description, status, duedate, priority, groupId]
   );
   res.json("200 OK");
-  console.log("Yay");
+  // console.log("Yay");
 });
 
 // Update task
@@ -158,13 +158,13 @@ app.get("/chat", async (req, res) => {
 
 app.post("/chat", async (req, res) => {
   const { message, groupId, memberId } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   const result = await db.query(
     "INSERT INTO chat (message, group_id, member_id) VALUES ($1, $2, $3)",
     [message, groupId, memberId]
   );
   res.json("200 OK");
-  console.log("Yay");
+  // console.log("Yay");
 });
 
 // Run server

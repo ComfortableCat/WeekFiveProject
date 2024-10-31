@@ -11,13 +11,13 @@ if (groupDetails === undefined || groupDetails === null) {
 }
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 chatsToPage();
-console.log(groupDetails["group"][0].id);
+//console.log(groupDetails["group"][0].id);
 async function chatsToPage() {
   const result = await fetch(
     `https://weekfiveproject.onrender.com/chat?groupId=${groupDetails["group"][0].id}`
   );
   const chats = await result.json();
-  console.log(chats);
+  // console.log(chats);
   msgFragment.replaceChildren();
   chats.forEach(chatBox);
   chatContainer.replaceChildren();
