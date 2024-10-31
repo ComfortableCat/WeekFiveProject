@@ -14,6 +14,9 @@ const taskUpdateBtn = document.getElementById("task-update-btn");
 const taskDeleteBtn = document.getElementById("task-delete-btn");
 const taskViewCalendar = document.getElementById("task-calendar-btn");
 
+if (groupDetails === null || groupDetails === undefined) {
+  window.location.assign(`http://127.0.0.1:5173/`);
+}
 //Add Page Title
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 

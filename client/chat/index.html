@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="./app.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 id="groupTitle"></h1>
+      <nav>
+        <ul>
+          <li><a href="http://127.0.0.1:5173/projectPage/">Project</a></li>
+          <li><a href="calender-page">Calendar</a></li>
+          <li><a href="http://127.0.0.1:5173/chat/">Chat</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="chatContainer"></div>
+      <form id="msgForm">
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Write message here....."
+          max="144"
+        ></textarea>
+        <button type="submit" id="msgBtn">Send</button>
+      </form>
+    </main>
+    <footer>Copyright 2024</footer>
+  </body>
+</html>
