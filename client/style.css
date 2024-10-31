@@ -100,9 +100,21 @@ footer {
   height: 10vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--primary-color);
+}
+
+footer a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: var(--highlight-color);
 }
 
 @media (min-width: 800px) {

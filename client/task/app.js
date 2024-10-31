@@ -5,14 +5,12 @@ const groupTitle = document.getElementById("groupTitle");
 const taskName = document.getElementById("task-name");
 const taskStatus = document.getElementById("task-status");
 const taskPriority = document.getElementById("task-priority");
-// const taskMembers = document.getElementById("assignee");
 const taskMembers = document.getElementById("task-assignees");
 const taskDetails = document.getElementById("details");
 const taskDue = document.getElementById("due");
 const taskButtons = document.getElementById("task-buttons");
 const taskUpdateBtn = document.getElementById("task-update-btn");
 const taskDeleteBtn = document.getElementById("task-delete-btn");
-const taskViewCalendar = document.getElementById("task-calendar-btn");
 
 if (groupDetails === null || groupDetails === undefined) {
   window.location.assign(`http://127.0.0.1:5173/`);

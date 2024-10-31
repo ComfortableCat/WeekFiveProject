@@ -4,7 +4,7 @@ const createBtn = document.getElementById("create");
 const gnErrP = document.getElementById("groupNameError");
 const dnErrP = document.getElementById("displayNameError");
 const passErrP = document.getElementById("passwordError");
-
+localStorage.clear();
 async function goToGroup(event) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
