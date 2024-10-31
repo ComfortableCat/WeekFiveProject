@@ -28,7 +28,6 @@ getTask();
 
 // Get task from database
 async function getTask(event) {
-  // const response = await fetch(`https://weekfiveproject.onrender.com/tasks`, {
   const response = await fetch(`https://weekfiveproject.onrender.com/tasks`, {
     method: "GET",
   });
@@ -98,7 +97,6 @@ async function updateTask(event) {
   const data = [id, name, status, priority, member_id, description, duedate];
   console.log(data);
 
-  // const response = fetch(`https://weekfiveproject.onrender.com/tasks`, {
   const response = fetch(`https://weekfiveproject.onrender.com/tasks`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

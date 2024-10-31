@@ -24,6 +24,7 @@ signoutBtn.addEventListener("click", () => {
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 toggleActive.addEventListener("click", () => {
   taskContainer.classList.toggle("notActive");
+  getTask();
   returnedContainer.classList.toggle("notActive");
   if (taskContainer.classList.contains("notActive") === false) {
     toggleActive.style.transform = "rotate(0.125turn)";
