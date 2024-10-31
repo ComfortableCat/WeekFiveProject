@@ -24,6 +24,7 @@ app.get("/groups", async (req, res) => {
     "SELECT * FROM groupmembers WHERE displayname = $1",
     [displayName]
   );
+  const response = {};
   const message = {
     group: "doesntExist",
     password: "bad",
@@ -41,12 +42,17 @@ app.get("/groups", async (req, res) => {
       "INSERT INTO groupmembers (displayname, group_id) VALUES ($1, (SELECT id FROM taskgroups WHERE name = $2))",
       [displayName, groupName]
     );
+    const memberResult = await db.query(
+      "SELECT * FROM groupmembers WHERE displayname = $1",
+      [displayName]
+    );
+    response.member = memberResult.rows;
+  } else {
+    response.member = displayData.rows;
   }
-  const response = {
-    group: groupData,
-    member: displayData.rows,
-    message: message,
-  };
+  response.group = groupData;
+  response.message = message;
+
   console.log("js.49", response);
   res.json(response);
 });
