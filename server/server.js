@@ -100,7 +100,7 @@ app.get("/members", async (req, res) => {
 // TASK ROUTES //
 // Retrieve tasks and associated members assigned
 app.get("/tasks", async function (req, res) {
-  const result = await db.query("SELECT * FROM tasks;");
+  const result = await db.query("SELECT * from tasks");
   const tasks = result.rows;
   res.json(tasks);
 });

@@ -5,7 +5,8 @@ const groupTitle = document.getElementById("groupTitle");
 const taskName = document.getElementById("task-name");
 const taskStatus = document.getElementById("task-status");
 const taskPriority = document.getElementById("task-priority");
-const taskMembers = document.getElementById("assignee");
+// const taskMembers = document.getElementById("assignee");
+const taskMembers = document.getElementById("task-assignees");
 const taskDetails = document.getElementById("details");
 const taskDue = document.getElementById("due");
 const taskButtons = document.getElementById("task-buttons");
@@ -32,6 +33,14 @@ async function getTask(event) {
   });
   const taskData = await response.json();
 
+  const memResponse = await fetch(
+    `http://localhost:8080/members?groupId=${groupDetails["group"][0].id}`,
+    {
+      method: "GET",
+    }
+  );
+  const memData = await memResponse.json();
+
   // Loop through tasks until task with correct ID found
   let index = -1;
   let found = false;
@@ -45,11 +54,27 @@ async function getTask(event) {
   const { name, status, priority, member_id, description, duedate } =
     taskData[index];
 
+  let userName = "";
+  let userId = 0;
+
+  // Loop through members in this group and append them as options to the task member drop down
+  memData.forEach((element) => {
+    const option = document.createElement("option");
+    option.value = element.id;
+    option.textContent = element.displayname;
+    taskMembers.appendChild(option);
+    // Set userName and userId to the currently assigned member
+    if (element.id === member_id) {
+      userName = element.displayname;
+      userId = element.id;
+    }
+  });
+
   // Update DOM with task
   taskName.value = name;
   taskStatus.value = status;
   taskPriority.value = priority;
-  taskMembers.value = member_id;
+  taskMembers.value = userId;
   taskDetails.value = description;
   taskDue.value = duedate;
 }
@@ -63,8 +88,10 @@ async function updateTask(event) {
   const member_id = taskMembers.value;
   const description = taskDetails.value;
   const duedate = taskDue.value;
+
   const data = [id, name, status, priority, member_id, description, duedate];
   console.log(data);
+
   // const response = fetch(`https://weekfiveproject.onrender.com/tasks`, {
   const response = fetch(`http://localhost:8080/tasks`, {
     method: "PUT",
