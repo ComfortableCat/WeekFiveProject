@@ -73,6 +73,6 @@ function saveAndGo(a) {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log(event.submitter.id, " pressed");
+  // console.log(event.submitter.id, " pressed");
   goToGroup(event);
 });
