@@ -12,6 +12,10 @@ const Done = document.getElementById("Done");
 const groupTitle = document.getElementById("groupTitle");
 const toggleActive = document.getElementById("toggleActive");
 
+if (groupDetails === null || groupDetails === undefined) {
+  window.location.assign(`http://127.0.0.1:5173/`);
+}
+
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 toggleActive.addEventListener("click", () => {
   taskContainer.classList.toggle("notActive");

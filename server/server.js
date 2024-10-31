@@ -140,6 +140,26 @@ app.delete("/tasks/:id", async function (req, res) {
 });
 
 // CHAT ROUTES //
+app.get("/chat", async (req, res) => {
+  const groupId = req.query;
+  const result = await db.query(
+    "SELECT t2.message, t1.displayname, t2.group_id FROM groupmembers t1 INNER JOIN chat t2 ON t1.group_id = t2.group_id AND t1.id = t2.member_id WHERE t2.group_id = $1",
+    [Number(groupId.groupId)]
+  );
+  const chats = result.rows;
+  res.json(chats);
+});
+
+app.post("/chat", async (req, res) => {
+  const { message, groupId, memberId } = req.body;
+  console.log(req.body);
+  const result = await db.query(
+    "INSERT INTO chat (message, group_id, member_id) VALUES ($1, $2, $3)",
+    [message, groupId, memberId]
+  );
+  res.json("200 OK");
+  console.log("Yay");
+});
 
 // Run server
 app.listen(8080, () => console.log("App is running on port 8080"));
