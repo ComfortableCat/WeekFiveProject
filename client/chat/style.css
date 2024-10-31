@@ -84,6 +84,17 @@ footer {
   background-color: var(--primary-color);
 }
 
+footer a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: var(--highlight-color);
+}
+
 #chatContainer {
   overflow-y: scroll;
   scrollbar-color: var(--secondary-color) transparent;
