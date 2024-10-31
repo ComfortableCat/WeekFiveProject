@@ -94,13 +94,11 @@ nav ul li a:hover {
 #membersDiv {
   background-color: var(--primary-color);
   padding: 1rem;
-  margin-top: 1.5rem;
-  margin-right: 20px;
   border-radius: 5px;
   position: fixed;
   right: 0;
-  top: 100px;
-  width: 300px;
+  top: 13vh;
+  width: 200px;
   height: auto;
 }
 
