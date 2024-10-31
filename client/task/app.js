@@ -15,7 +15,7 @@ const taskDeleteBtn = document.getElementById("task-delete-btn");
 const taskViewCalendar = document.getElementById("task-calendar-btn");
 
 if (groupDetails === null || groupDetails === undefined) {
-  window.location.assign(`http://127.0.0.1:5173/`);
+  window.location.assign(`https://loopin.onrender.com/`);
 }
 //Add Page Title
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
@@ -31,13 +31,13 @@ getTask();
 // Get task from database
 async function getTask(event) {
   // const response = await fetch(`https://weekfiveproject.onrender.com/tasks`, {
-  const response = await fetch(`http://localhost:8080/tasks`, {
+  const response = await fetch(`https://weekfiveproject.onrender.com/tasks`, {
     method: "GET",
   });
   const taskData = await response.json();
 
   const memResponse = await fetch(
-    `http://localhost:8080/members?groupId=${groupDetails["group"][0].id}`,
+    `https://weekfiveproject.onrender.com/members?groupId=${groupDetails["group"][0].id}`,
     {
       method: "GET",
     }
@@ -101,7 +101,7 @@ async function updateTask(event) {
   console.log(data);
 
   // const response = fetch(`https://weekfiveproject.onrender.com/tasks`, {
-  const response = fetch(`http://localhost:8080/tasks`, {
+  const response = fetch(`https://weekfiveproject.onrender.com/tasks`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -111,9 +111,12 @@ async function updateTask(event) {
 
 // Deletes the task from the database then redirects to project page
 function deleteTask() {
-  const response = fetch(`http://localhost:8080/tasks/${taskId}`, {
-    method: "DELETE",
-  });
+  const response = fetch(
+    `https://weekfiveproject.onrender.com/tasks/${taskId}`,
+    {
+      method: "DELETE",
+    }
+  );
   displayNotification("delete");
 }
 
@@ -131,7 +134,7 @@ function displayNotification(action) {
     actionMessage.remove();
     // Redirect user to project page if task has been deleted
     if (action === "delete") {
-      window.location.href = "http://localhost:5173/projectPage/";
+      window.location.href = "https://loopin.onrender.com/projectPage/";
     }
   }, 3000);
 }

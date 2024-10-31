@@ -13,7 +13,7 @@ const groupTitle = document.getElementById("groupTitle");
 const toggleActive = document.getElementById("toggleActive");
 
 if (groupDetails === null || groupDetails === undefined) {
-  window.location.assign(`http://127.0.0.1:5173/`);
+  window.location.assign(`https://loopin.onrender.com/`);
 }
 
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
@@ -35,7 +35,7 @@ async function handleSubmit(event) {
   formObj.groupId = groupDetails["group"][0].id;
   console.log(formObj);
 
-  const response = await fetch("http://localhost:8080/tasks", {
+  const response = await fetch("https://weekfiveproject.onrender.com/tasks", {
     //This works - don't touch
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -86,7 +86,7 @@ function taskToPage(task) {
     const a = document.createElement("a");
     a.textContent = `${name}`;
     // a.href = `http://127.0.0.1:5173/task/?name=${task.name}`;
-    a.href = `http://127.0.0.1:5173/task/?id=${task.id}`;
+    a.href = `https://loopin.onrender.com/task/?id=${task.id}`;
 
     a.addEventListener("mouseenter", () => {
       a.style.color = "rgb(228,224,221)";
@@ -124,7 +124,7 @@ async function loadMembers() {
     membersDiv.appendChild(membersP);
 
     const response = await fetch(
-      `http://localhost:8080/members?groupId=${groupDetails["group"][0].id}`
+      `https://weekfiveproject.onrender.com/members?groupId=${groupDetails["group"][0].id}`
     );
     const members = await response.json();
     console.log("JSON data:", members);

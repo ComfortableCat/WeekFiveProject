@@ -21,7 +21,7 @@ async function goToGroup(event) {
     if (data.password.length >= 6) {
       if (event.submitter.id === "join") {
         const result = await fetch(
-          `http://localhost:8080/groups?groupName=${data.groupName}&displayName=${data.displayName}&password=${data.password}`
+          `https://weekfiveproject.onrender.com/groups?groupName=${data.groupName}&displayName=${data.displayName}&password=${data.password}`
         );
         const reply = await result.json();
         if (reply.message.group === "doesntExist") {
@@ -37,11 +37,14 @@ async function goToGroup(event) {
       } else if (event.submitter.id === "create") {
         //create request
 
-        const result = await fetch(`http://localhost:8080/groups`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
+        const result = await fetch(
+          `https://weekfiveproject.onrender.com/groups`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }
+        );
         const reply = await result.json();
         if (reply === "gExists") {
           gnErrP.textContent = "Group already exists";
@@ -65,7 +68,7 @@ function saveAndGo(a) {
     "details",
     JSON.stringify({ group: a.group, member: a.member })
   );
-  window.location.assign(`http://127.0.0.1:5173/projectPage/`);
+  window.location.assign(`https://loopin.onrender.com/projectPage/`);
 }
 
 form.addEventListener("submit", (event) => {

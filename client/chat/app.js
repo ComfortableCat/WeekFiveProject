@@ -7,14 +7,14 @@ const groupDetails = JSON.parse(localStorage.getItem("details"));
 const msgFragment = document.createDocumentFragment();
 
 if (groupDetails === undefined || groupDetails === null) {
-  window.location.assign("http://127.0.0.1:5173/");
+  window.location.assign("https://loopin.onrender.com/");
 }
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 chatsToPage();
 console.log(groupDetails["group"][0].id);
 async function chatsToPage() {
   const result = await fetch(
-    `http://localhost:8080/chat?groupId=${groupDetails["group"][0].id}`
+    `https://weekfiveproject.onrender.com/chat?groupId=${groupDetails["group"][0].id}`
   );
   const chats = await result.json();
   console.log(chats);
@@ -44,7 +44,7 @@ async function submitMsg(event) {
   const formObj = Object.fromEntries(formData);
   formObj.groupId = groupDetails["group"][0].id;
   formObj.memberId = groupDetails["member"][0].id;
-  const result = await fetch(`http://localhost:8080/chat`, {
+  const result = await fetch(`https://weekfiveproject.onrender.com/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formObj),
