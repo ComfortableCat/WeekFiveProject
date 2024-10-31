@@ -85,9 +85,14 @@ async function updateTask(event) {
   const name = taskName.value;
   const status = taskStatus.value;
   const priority = taskPriority.value;
-  const member_id = taskMembers.value;
   const description = taskDetails.value;
   const duedate = taskDue.value;
+  let member_id;
+  if (taskMembers.value == "null") {
+    member_id = null;
+  } else {
+    member_id = taskMembers.value;
+  }
 
   const data = [id, name, status, priority, member_id, description, duedate];
   console.log(data);
