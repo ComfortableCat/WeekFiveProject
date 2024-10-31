@@ -83,6 +83,18 @@ function taskToPage(task) {
     a.textContent = `${name}`;
     // a.href = `http://127.0.0.1:5173/task/?name=${task.name}`;
     a.href = `http://127.0.0.1:5173/task/?id=${task.id}`;
+
+    a.addEventListener("mouseenter", () => {
+      a.style.color = "rgb(228,224,221)";
+      a.style.textDecoration = "underline";
+      a.style.transform = "scale(1.1)";
+    });
+    a.addEventListener("mouseleave", () => {
+      a.style.color = "rgb(117, 215, 150)";
+      a.style.textDecoration = "none";
+      a.style.transform = "scale(1)";
+    });
+
     if (status === "todo") {
       ToDo.appendChild(a);
     } else if (status === "doing") {
