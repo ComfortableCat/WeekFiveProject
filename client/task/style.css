@@ -1,3 +1,4 @@
+/* Site colour scheme */
 :root {
   --primary-color: #e4dddc; /* light grey */
   --secondary-color: #6d6d72; /* medium grey */
@@ -19,6 +20,7 @@ body {
   color: var(--accent-color);
 }
 
+/* Site header */
 header {
   width: 100%;
   z-index: 1000;
@@ -35,6 +37,7 @@ header h1 {
   text-align: center;
 }
 
+/* Nav bar */
 nav {
   display: flex;
   justify-content: space-between;
@@ -68,6 +71,7 @@ main {
   text-align: center;
 }
 
+/* Main container for task display */
 .task-container {
   display: flex;
   flex-direction: column;
@@ -103,6 +107,7 @@ main {
   width: 70vw;
 }
 
+/* style individual labels and inputs */
 .task-titlecard select {
   min-width: 30vw;
 }
@@ -150,20 +155,6 @@ select {
   text-align: center;
 }
 
-/*.task-detailcard {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: #e4dddc;
-  color: #352208;
-  margin: 20px;
-  padding: 20px 10px;
-  border-radius: 10px;
-  border: 2px solid #6d6d72;
-}*/
-
 .task-detailcard div {
   display: flex;
   flex-direction: column;
@@ -179,6 +170,13 @@ select {
 
 .task-due input {
   min-width: 30vw;
+}
+
+/* Style user action buttons */
+#task-buttons {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
 }
 
 #task-buttons button {
@@ -203,13 +201,31 @@ footer {
   height: 10vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--primary-color);
 }
-/*@media (min-width: 800px) {
-  main {
-    width: 560px;
+
+footer a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: var(--highlight-color);
+}
+
+@media (min-width: 850px) {
+  #task-buttons button {
+    background-color: #5c9ead;
+    border: 1px solid #e4dddc;
+    color: #f8f4f1;
+    font-family: monospace;
+    font-size: 24px;
+    border-radius: 5px;
+    padding: 10px;
   }
 }
-*/
