@@ -75,6 +75,18 @@ nav ul li a:hover {
   color: var(--highlight-color);
 }
 
+#signout {
+  position: absolute;
+  bottom: 4px;
+  left: 1vw;
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
 #membersBtn {
   position: absolute;
   bottom: 4px;

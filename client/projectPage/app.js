@@ -11,10 +11,15 @@ const Doing = document.getElementById("Doing");
 const Done = document.getElementById("Done");
 const groupTitle = document.getElementById("groupTitle");
 const toggleActive = document.getElementById("toggleActive");
+const signoutBtn = document.getElementById("signout");
 
 if (groupDetails === null || groupDetails === undefined) {
   window.location.assign(`https://loopin.onrender.com/`);
 }
+signoutBtn.addEventListener("click", () => {
+  localStorage.clear();
+  window.location.assign(`https://loopin.onrender.com/`);
+});
 
 groupTitle.textContent = `LoopIn: ${groupDetails["group"][0].name}`;
 toggleActive.addEventListener("click", () => {
