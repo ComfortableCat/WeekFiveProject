@@ -166,6 +166,7 @@ select {
 
 .task-detailcard textarea {
   width: 70vw;
+  font-size: 20px;
 }
 
 .task-due input {
@@ -224,8 +225,30 @@ footer a:hover {
     border: 1px solid #e4dddc;
     color: #f8f4f1;
     font-family: monospace;
-    font-size: 24px;
+    font-size: 26px;
     border-radius: 5px;
     padding: 10px;
+  }
+
+  .task-container input,
+  textarea,
+  select {
+    font-size: 22px;
+  }
+
+  .task-due input {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .task-container input,
+  textarea,
+  select {
+    font-size: 26px;
+  }
+
+  .task-due input {
+    font-size: 26px;
   }
 }
