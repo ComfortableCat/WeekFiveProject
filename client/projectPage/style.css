@@ -111,7 +111,7 @@ nav ul li a:hover {
 }
 
 .memberName {
-  color: var(--secondary-color);
+  color: rgb(117, 215, 150);
   padding: 0.5rem 0;
   font-size: 1rem;
 }
@@ -244,5 +244,14 @@ footer {
   }
   #returned-container a {
     font-size: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  #membersDiv {
+    top: 70px;
+    right: 5px;
+    width: 90vw;
+    max-width: none;
   }
 }
